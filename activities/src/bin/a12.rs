@@ -11,12 +11,22 @@ struct ShippingBox {
     weight: f64,
     color: Color,
 }
+
 // * Use an enum for the box color
-#[derive(Debug)]
 enum Color {
     Red,
     Green,
     Blue,
+}
+
+impl Color {
+    fn print(&self) {
+        match self {
+            Color::Red => println!("Red"),
+            Color::Green => println!("Green"),
+            Color::Blue => println!("Blue"),
+        }
+    }
 }
 // * Implement functionality on the box struct to create a new box
 impl ShippingBox {
@@ -31,7 +41,7 @@ impl ShippingBox {
     fn print_characteristics(&self) {
         println!("Dimensions: {:?}", self.dimensions);
         println!("Weight: {}", self.weight);
-        println!("Color: {:?}", self.color);
+        self.color.print()
     }
 }
 // * Implement functionality on the box struct to print the characteristics
